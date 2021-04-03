@@ -47,7 +47,9 @@ export function postOptionsFormData(body = {}, method = "POST", headers = {}) {
     method,
     headers: {
       ...headers,
-      Authorization: `Bearer ${auth.tokenUser}`,
+      // Authorization: `Bearer ${auth.tokenUser}`,
+      Token: auth.tokenUser,
+      App: auth.dataUser.app,
     },
     body,
   };
@@ -73,7 +75,9 @@ export function getOptions(method = "GET", headers = {}) {
       ...headers,
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${auth.tokenUser}`,
+      // Authorization: `Bearer ${auth.tokenUser}`,
+      Token: auth.tokenUser,
+      App: auth.dataUser.app,
     },
   };
 }
@@ -85,7 +89,7 @@ export function getOptionsWithToken(token = "", method = "GET", headers = {}) {
       ...headers,
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      // Authorization: `Bearer ${token}`,
     },
   };
 }
@@ -109,7 +113,9 @@ export function postOptions(body = {}, method = "POST", headers = {}) {
       ...headers,
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${auth.tokenUser}`,
+      // Authorization: `Bearer ${auth.tokenUser}`,
+      Token: auth.tokenUser,
+      App: auth.dataUser.app,
     },
     body: JSON.stringify(body),
   };
@@ -135,7 +141,9 @@ export function putOptions(body = {}, method = "PUT", headers = {}) {
       ...headers,
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${auth.tokenUser}`,
+      // Authorization: `Bearer ${auth.tokenUser}`,
+      Token: auth.tokenUser,
+      App: auth.dataUser.app,
     },
     body: JSON.stringify(body),
   };
@@ -149,7 +157,9 @@ export function patchOptions(body = {}, method = "PATCH", headers = {}) {
       ...headers,
       "Content-Type": "application/json",
       Accept: "application/json",
-      Authorization: `Bearer ${auth.tokenUser}`,
+      // Authorization: `Bearer ${auth.tokenUser}`,
+      Token: auth.tokenUser,
+      App: auth.dataUser.app,
     },
     body: JSON.stringify(body),
   };
@@ -163,7 +173,9 @@ export function deleteOptions(body, method = "DELETE", headers = {}) {
       ...headers,
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${auth.tokenUser}`,
+      // Authorization: `Bearer ${auth.tokenUser}`,
+      Token: auth.tokenUser,
+      App: auth.dataUser.app,
     },
     body: JSON.stringify(body),
   };

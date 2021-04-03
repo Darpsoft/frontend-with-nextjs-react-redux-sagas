@@ -4,6 +4,8 @@ import request, { postOptionsWithoutToken, putOptionsWithoutToken } from "@utils
 import { showLoader, hideLoader, loginSuccess } from "@redux/actions";
 import { LOGIN_START, REGISTER_START } from "@redux/constants";
 import { message } from "antd";
+import Router from "next/router";
+import { role } from "@utils/middlewareRole";
 
 export function* Login({ payload: { password, email } }) {
   try {
@@ -15,9 +17,10 @@ export function* Login({ payload: { password, email } }) {
     const userTypeName = requestLogin.userRole.userRole;
 
     // En este caso solo se utilizará en token {sessionTokenBck}
-    yield all([put(loginSuccess({ tokenUser: requestLogin.sessionTokenBck, dataUser: { ...requestLogin, userTypeName } }))]);
-    yield call(Router.push, goBack ? atob(goBack) : role.getUrl(userTypeName));
+    yield all([put(loginSuccess({ tokenUser: requestLogin.sessionTokenBck, dataUser: { ...requestLogin, userTypeName, app: "APP_BCK" } }))]);
+    yield call(Router.push, role.getUrl(userTypeName));
   } catch (err) {
+    console.log("🚀 ~ file: auth.js ~ line 21 ~ function*Login ~ err", err);
     message.error("Datos incorrectos");
   } finally {
     yield put(hideLoader());

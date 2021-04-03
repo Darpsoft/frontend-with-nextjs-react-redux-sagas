@@ -20,24 +20,24 @@ export function IndexPage() {
           <Row>
             <Col xl={24} lg={24} md={24} sm={24} xs={24}>
               <p className="gx-text-grey">Detalles del Contenedor</p>
-              <h2 className="gx-text-uppercase gx-text-black gx-font-weight-bold gx-fnd-title">REGISTRO DE ANALISIS</h2>
-              <p>Este contenedor tiene como funcionalidad el registro de los Ideas del Landing Page</p>
+              <h2 className="gx-text-uppercase gx-text-black gx-font-weight-bold gx-fnd-title">REGISTROS DE RESERVACIONES</h2>
+              <p>Este contenedor tiene como funcionalidad la visualización de reservaciones</p>
             </Col>
           </Row>
           <Divider dashed />
           <Row>
             <Col span={10}>
-              <h1 className="gx-text-grey">Historial de Ideas</h1>
+              <h1 className="gx-text-grey">Historial de Reservaciones</h1>
             </Col>
-            <Col span={14} style={{ display: "flex", alignItems: "flex-end", flexDirection: "column" }}>
+            {/* <Col span={14} style={{ display: "flex", alignItems: "flex-end", flexDirection: "column" }}>
               <Button
                 type="primary"
                 onClick={() => dispatchComponent({ modal: true, selected: {} })}
                 icon={<i className="icon icon-add" style={{ marginRight: 5, verticalAlign: "inherit" }}></i>}
               >
-                NUEVO IDEAS
+                NUEVOA RESERVACION
               </Button>
-            </Col>
+            </Col> */}
           </Row>
           <TableComponent openModal={dispatchComponent} />
         </div>

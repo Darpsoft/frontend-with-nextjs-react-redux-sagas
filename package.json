@@ -10,12 +10,12 @@
   "dependencies": {
     "@ant-design/icons": "^4.6.2",
     "Buffer": "^0.0.0",
-    "antd": "^4.15.0",
     "lodash": "^4.17.21",
     "next": "^10.0.0",
     "next-cookies": "^2.0.3",
     "next-redux-wrapper": "^6.0.2",
     "nprogress": "^0.2.0",
+    "antd": "^4.5.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-redux": "^7.2.3",

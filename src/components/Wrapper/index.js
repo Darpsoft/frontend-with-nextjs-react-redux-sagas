@@ -1,5 +1,6 @@
 import React from "react";
 import { Layout, Menu, Row, Col } from "antd";
+import Navbar from "@components/NavBar/Navbar";
 const { Header, Content, Footer } = Layout;
 
 export const Wrapper = ({ children, isAuth = true }) => {
@@ -8,11 +9,7 @@ export const Wrapper = ({ children, isAuth = true }) => {
   }
   return (
     <Layout className="gx-app-layout">
-      <Header>
-        <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
-          <Menu.Item key="1">Home</Menu.Item>
-        </Menu>
-      </Header>
+      <Navbar />
       <Content className="gx-layout-content">
         <div className="gx-main-content-wrapper">
           <Row justify="center">

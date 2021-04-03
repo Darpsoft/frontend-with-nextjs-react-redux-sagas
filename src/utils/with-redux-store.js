@@ -38,7 +38,10 @@ const withReduxStore = (App) => {
 
       const reduxStore = getOrCreateStore(await defaultValueStorage(appContext.ctx, hostname));
       appContext.ctx.reduxStore = reduxStore;
-      // middlewareRouterToken(appContext.ctx);
+
+      // Verificar las rutas disponibles
+      middlewareRouterToken(appContext.ctx);
+
       return {
         pageProps: Component.getInitialProps ? await Component.getInitialProps(ctx) : {},
         initialReduxState: reduxStore.getState(),

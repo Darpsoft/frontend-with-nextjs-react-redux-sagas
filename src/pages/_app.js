@@ -2,9 +2,11 @@
 /* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable react/jsx-props-no-spreading */
 
+import "antd/dist/antd.css";
 import "public/styles/style.css";
+import "public/styles/navbar.css";
+
 import "nprogress/nprogress.css";
-// import "antd/dist/antd.css";
 
 import Head from "next/head";
 
