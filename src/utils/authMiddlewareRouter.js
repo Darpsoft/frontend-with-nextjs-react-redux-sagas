@@ -1,48 +1,11 @@
 import redirectTo from "./redirectTo";
 import { role } from "./middlewareRole";
 
-// TODO: Huascar, aquí colocas todas las rutas que sean disponibles para todos.
-export const availableToAll = [
-  "/libro/[bookId]",
-  "/curso/[productId]",
-  "/tramite/[productId]",
-  "/noticia/[postId]",
-  "/entidad/[commerceId]",
-  "/pagar/[productId]",
-  "/perfil-bolsa-trabajo/[curriculumId]",
-  "/certificado/[enrollmentId]",
-  "/pago/[paymentId]",
-  "/cursos",
-  "/noticias",
-  "/ofertas",
-  "/entidades",
-  "/entidad",
-  "/bolsas-trabajo",
-  "/biblioteca-virtual",
-  "/tramites",
-  "/curriculums",
-  "/negocios",
-  "/",
-  "/_error",
-  "/404"
-];
+// TODO: Aquí se coloca todas las rutas que sean disponibles para todos.
+export const availableToAll = ["/_error", "/404"];
 
-// TODO: Todas las rutas que no requieren petición al backend
-export const noRequireRequest = [
-  "/registro",
-  "/ingreso",
-  "/nueva-contrasena",
-  "/olvide-contrasena",
-  "/terminos-condiciones",
-  "/cpanel/signup",
-  "/cpanel",
-  "/logout",
-  "/fast-login",
-  "/_error",
-  "/404"
-];
-
-export const routerLandingAvailable = [];
+// TODO: Todas las rutas que no requieren petición a backend
+export const noRequireRequest = ["/registro", "/ingreso", "/_error", "/404"];
 
 const AuthMiddlewareRouter = (ctx) => {
   const { pathname, reduxStore: store } = ctx;
@@ -53,7 +16,7 @@ const AuthMiddlewareRouter = (ctx) => {
   const auth = () => {
     //eslint-disable-line
     if (!token) {
-      redirectTo("/ingreso", { res: ctx.res, status: 301 });
+      redirectTo("/login", { res: ctx.res, status: 301 });
     }
   };
 
@@ -64,34 +27,11 @@ const AuthMiddlewareRouter = (ctx) => {
   };
 
   switch (pathname) {
-    case "/fast-login":
+    case "/register":
       authNoNeedLogin();
       return;
-    case "/registro":
+    case "/login":
       authNoNeedLogin();
-      return;
-    case "/ingreso":
-      authNoNeedLogin();
-      return;
-    case "/nueva-contrasena":
-      authNoNeedLogin();
-      return;
-    case "/olvide-contrasena":
-      authNoNeedLogin();
-      return;
-    case "/terminos-condiciones":
-      authNoNeedLogin();
-      return;
-    case "/cpanel/signup":
-      authNoNeedLogin();
-      return;
-    case "/cpanel":
-      authNoNeedLogin();
-    case "/logout":
-      auth();
-      return;
-    case "/perfil":
-      auth();
       return;
   }
 

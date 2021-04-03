@@ -13,6 +13,7 @@ import Router from "next/router";
 
 import withReduxStore from "@utils/with-redux-store";
 import { Provider } from "react-redux";
+import { Main } from "@containers/Main";
 
 NProgress.configure({ showSpinner: false });
 
@@ -38,7 +39,7 @@ function MyApp({ Component, pageProps, reduxStore }) {
       </Head>
 
       <Provider store={reduxStore}>
-        <Component {...pageProps} />
+        <Main component={Component} pageProps={pageProps} />
       </Provider>
     </>
   );
