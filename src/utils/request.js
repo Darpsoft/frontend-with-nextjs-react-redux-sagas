@@ -41,21 +41,23 @@ export default function request(url, options) {
   return fetch(url, options).then(checkStatus).then(parseJSON);
 }
 
-export function postOptionsFormData(body = {}, method = "POST") {
+export function postOptionsFormData(body = {}, method = "POST", headers = {}) {
   const { auth } = storage.getState();
   return {
     method,
     headers: {
+      ...headers,
       Authorization: `Bearer ${auth.tokenUser}`,
     },
     body,
   };
 }
 
-export function postOptionsWithoutToken(body = {}, method = "POST") {
+export function postOptionsWithoutToken(body = {}, method = "POST", headers = {}) {
   return {
     method,
     headers: {
+      ...headers,
       Accept: "application/json",
       "Content-Type": "application/json",
     },
@@ -63,11 +65,12 @@ export function postOptionsWithoutToken(body = {}, method = "POST") {
   };
 }
 
-export function getOptions(method = "GET") {
+export function getOptions(method = "GET", headers = {}) {
   const { auth } = storage.getState();
   return {
     method,
     headers: {
+      ...headers,
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${auth.tokenUser}`,
@@ -75,10 +78,11 @@ export function getOptions(method = "GET") {
   };
 }
 
-export function getOptionsWithToken(token = "", method = "GET") {
+export function getOptionsWithToken(token = "", method = "GET", headers = {}) {
   return {
     method,
     headers: {
+      ...headers,
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -86,21 +90,23 @@ export function getOptionsWithToken(token = "", method = "GET") {
   };
 }
 
-export function getOptionsWithoutToken(method = "GET") {
+export function getOptionsWithoutToken(method = "GET", headers = {}) {
   return {
     method,
     headers: {
+      ...headers,
       Accept: "application/json",
       "Content-Type": "application/json",
     },
   };
 }
 
-export function postOptions(body = {}, method = "POST") {
+export function postOptions(body = {}, method = "POST", headers = {}) {
   const { auth } = storage.getState();
   return {
     method,
     headers: {
+      ...headers,
       Accept: "application/json",
       "Content-Type": "application/json",
       Authorization: `Bearer ${auth.tokenUser}`,
@@ -109,23 +115,38 @@ export function postOptions(body = {}, method = "POST") {
   };
 }
 
-export function putOptions(body = {}, method = "PUT") {
+export function putOptionsWithoutToken(body = {}, method = "PUT", headers = {}) {
+  return {
+    method,
+    headers: {
+      ...headers,
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(body),
+  };
+}
+
+export function putOptions(body = {}, method = "PUT", headers = {}) {
   const { auth } = storage.getState();
   return {
     method,
     headers: {
+      ...headers,
       Accept: "application/json",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${auth.tokenUser}`,
     },
     body: JSON.stringify(body),
   };
 }
 
-export function patchOptions(body = {}, method = "PATCH") {
+export function patchOptions(body = {}, method = "PATCH", headers = {}) {
   const { auth } = storage.getState();
   return {
     method,
     headers: {
+      ...headers,
       "Content-Type": "application/json",
       Accept: "application/json",
       Authorization: `Bearer ${auth.tokenUser}`,
@@ -134,12 +155,14 @@ export function patchOptions(body = {}, method = "PATCH") {
   };
 }
 
-export function deleteOptions(body, method = "DELETE") {
+export function deleteOptions(body, method = "DELETE", headers = {}) {
   const { store } = storage.getState();
   return {
     method,
     headers: {
+      ...headers,
       Accept: "application/json",
+      "Content-Type": "application/json",
       Authorization: `Bearer ${auth.tokenUser}`,
     },
     body: JSON.stringify(body),

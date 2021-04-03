@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import { Button, Checkbox, Form, Input, Row, Spin } from "antd";
-import { loginStart } from "@redux/actions";
+import { Button, Divider, Form, Input, Spin } from "antd";
+import { registerStart } from "@redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 
-export function LoginForm() {
+export function RegisterForm() {
   const { settings } = useSelector((store) => store);
   const dispatch = useDispatch();
 
@@ -12,19 +12,29 @@ export function LoginForm() {
     console.log("Failed:", errorInfo);
   };
 
-  const onFinish = ({ remember, ...values }) => {
-    dispatch(loginStart(values));
+  const onFinish = (values) => {
+    dispatch(registerStart(values));
   };
 
   return (
     <Spin spinning={settings.loader}>
       <Form
-        initialValues={{ email: "testapis@tuten.cl", password: "1234" }}
+        initialValues={{ email: "pedro@test.com", password: "123456", firstname: "Pedro", lastname: "Fuentes", phoneNumber: "+584128899502" }}
         name="basic"
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         className="gx-signin-form gx-form-row0"
       >
+        <Form.Item rules={[{ required: true, message: "Ingrese un nombre" }]} name="firstname">
+          <Input placeholder="Nombre" />
+        </Form.Item>
+        <Form.Item rules={[{ required: true, message: "Ingrese un apellido" }]} name="lastname">
+          <Input placeholder="Apellido" />
+        </Form.Item>
+        <Form.Item rules={[{ required: true, message: "Ingrese un número de teléfono" }]} name="phoneNumber">
+          <Input placeholder="Número de teléfono" />
+        </Form.Item>
+        <Divider dashed />
         <Form.Item rules={[{ required: true, type: "email", message: "Este no es un correo válido" }]} name="email">
           <Input placeholder="Email" />
         </Form.Item>
@@ -32,24 +42,12 @@ export function LoginForm() {
           <Input.Password placeholder="Contraseña" />
         </Form.Item>
         <Form.Item>
-          <Row justify="space-between">
-            <Form.Item name="remember" valuePropName="checked">
-              <Checkbox>Recordar</Checkbox>
-            </Form.Item>
-            <Form.Item>
-              <a className="gx-login-form-forgot" href="#">
-                Olvidé contraseña
-              </a>
-            </Form.Item>
-          </Row>
-        </Form.Item>
-        <Form.Item>
           <Button type="primary" className="gx-mb-0" htmlType="submit">
-            Ingresar
+            Registrarse
           </Button>
           <span>ó</span>{" "}
-          <Link href="/register">
-            <a>Registrame</a>
+          <Link href="/login">
+            <a>Iniciar sesión</a>
           </Link>
         </Form.Item>
         <span className="gx-text-light gx-fs-sm"> </span>
@@ -57,4 +55,4 @@ export function LoginForm() {
     </Spin>
   );
 }
-export default LoginForm;
+export default RegisterForm;

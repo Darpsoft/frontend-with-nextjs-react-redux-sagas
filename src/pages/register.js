@@ -1,12 +1,12 @@
 import React from "react";
 
-import Login from "@containers/Login";
 import { Wrapper } from "@components/Wrapper";
+import Register from "@containers/Register";
 
 const PageLogin = () => {
   return (
-    <Wrapper isAuth={false}>
-      <Login />
+    <Wrapper>
+      <Register />
     </Wrapper>
   );
 };
