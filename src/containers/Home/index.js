@@ -1,8 +1,12 @@
 import React, { useEffect } from "react";
 import { Button, Row, Col, Divider } from "antd";
 import { customUseReducer } from "@utils/customHooks";
+
 import { TableComponent } from "./components/TableComponent";
 import Widget from "@components/Widget";
+
+import { requestHomeStart } from "@redux/actions";
+import { useDispatch } from "react-redux";
 
 const initialState = {
   loading: false,
@@ -11,9 +15,16 @@ const initialState = {
 };
 
 export function IndexPage() {
+  const dispatch = useDispatch();
   const [state, dispatchComponent] = customUseReducer(initialState);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    initialRequest();
+  }, []);
+
+  const initialRequest = async () => {
+    dispatch(requestHomeStart());
+  };
 
   return (
     <>

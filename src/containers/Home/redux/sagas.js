@@ -2,11 +2,15 @@ import { put, takeLatest, select, all, call } from "redux-saga/effects";
 import request, { showMessageError } from "@utils/request";
 import { showLoader, hideLoader } from "@redux/actions";
 import { REQUEST_HOME_START } from "@redux/constants";
+import { UserServices } from "@services/User";
 
-export function* requestHome() {
+export function* requestHome({ payload }) {
+  console.log("🚀 ~ file: home.js ~ line 7 ~ function*requestHome ~ payload", payload);
   const storage = yield select((state) => state);
+  const userServices = new UserServices();
   try {
     yield put(showLoader());
+    userServices.getBookins();
   } catch (err) {
     yield showMessageError(err);
   } finally {
@@ -14,6 +18,6 @@ export function* requestHome() {
   }
 }
 
-export default function* productSaga() {
+export function* homeSaga() {
   yield takeLatest(REQUEST_HOME_START, requestHome);
 }

@@ -1,11 +1,21 @@
+import React, { useEffect } from "react";
+
 import { Wrapper } from "@components/Wrapper";
 import Home from "@containers/Home";
-import { requestHomeStart } from "@redux/actions";
-import React, { useEffect } from "react";
+
+import { homeSaga } from "@containers/Home/redux/sagas";
+import { homeReducer } from "@containers/Home/redux/reducers";
+import { requestHomeStart } from "@containers/Home/redux/actions";
+
+import injectSaga from "@utils/inject-saga";
+import injectReducer from "@utils/inject-reducer";
+
+import { compose } from "redux";
 import { useDispatch } from "react-redux";
 
 const PageHome = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     initialRequest();
   }, []);
@@ -13,7 +23,6 @@ const PageHome = () => {
   const initialRequest = async () => {
     dispatch(requestHomeStart());
   };
-
   return (
     <Wrapper>
       <Home />
@@ -21,4 +30,7 @@ const PageHome = () => {
   );
 };
 
-export default PageHome;
+const withReducer = injectReducer({ key: "home", reducer: homeReducer });
+const withSaga = injectSaga({ key: "home", saga: homeSaga });
+
+export default compose(withSaga, withReducer)(PageHome);
