@@ -3,6 +3,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 
 import "public/styles/style.css";
+// import "antd/dist/antd.css";
 
 import App from "next/app";
 import { Provider } from "react-redux";

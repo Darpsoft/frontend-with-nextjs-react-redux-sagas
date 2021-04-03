@@ -79,6 +79,11 @@ Version        : 1.0
         09. Algolia Styles
 
   =============================================================*/
+  
+#__next {
+  height: 100%;
+  overflow: auto;
+}
 
 .alert-muted {
   width: 100%;
