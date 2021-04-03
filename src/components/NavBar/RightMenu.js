@@ -6,7 +6,7 @@ export const RightMenu = ({ className, block }) => {
   const router = useRouter();
 
   const geLogout = () => {
-    router.push(`/logout?goBack=${btoa(router.asPath)}`);
+    router.push(`/logout`);
   };
 
   return (

@@ -24,7 +24,6 @@ export function getOrCreateStore(initialState) {
 
 export const defaultValueStorage = async (ctx, hostname) => {
   const storage = get(cookies(ctx), getCookieName(hostname, "storage"), false);
-
   return {
     auth: storage.auth,
   };
@@ -45,6 +44,7 @@ const withReduxStore = (App) => {
       return {
         pageProps: Component.getInitialProps ? await Component.getInitialProps(ctx) : {},
         initialReduxState: reduxStore.getState(),
+        hostname,
       };
     }
 

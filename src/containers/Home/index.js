@@ -26,8 +26,11 @@ export function IndexPage() {
           </Row>
           <Divider dashed />
           <Row>
-            <Col span={10}>
+            <Col span={24}>
               <h1 className="gx-text-grey">Historial de Reservaciones</h1>
+              <p style={{ marginBottom: 8, color: "#ca0000" }}>
+                El buscador solo realiza busqueda en los datos que están cargados localmente, no vuelve a realizar otra petición cuando se presiona en Buscar
+              </p>
             </Col>
             {/* <Col span={14} style={{ display: "flex", alignItems: "flex-end", flexDirection: "column" }}>
               <Button

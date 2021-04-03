@@ -5,7 +5,7 @@ import { role } from "./middlewareRole";
 export const availableToAll = ["/_error", "/404"];
 
 // TODO: Todas las rutas que no requieren petición a backend
-export const noRequireRequest = ["/registro", "/ingreso", "/_error", "/404"];
+export const noRequireRequest = ["/registro", "/ingreso", "/logout", "/_error", "/404"];
 
 const AuthMiddlewareRouter = (ctx) => {
   const { pathname, reduxStore: store } = ctx;
@@ -32,6 +32,9 @@ const AuthMiddlewareRouter = (ctx) => {
       return;
     case "/login":
       authNoNeedLogin();
+      return;
+    case "/logout":
+      auth();
       return;
   }
 

@@ -32,18 +32,6 @@ export function LoginForm() {
           <Input.Password placeholder="Contraseña" />
         </Form.Item>
         <Form.Item>
-          <Row justify="space-between">
-            <Form.Item name="remember" valuePropName="checked">
-              <Checkbox>Recordar</Checkbox>
-            </Form.Item>
-            <Form.Item>
-              <a className="gx-login-form-forgot" href="#">
-                Olvidé contraseña
-              </a>
-            </Form.Item>
-          </Row>
-        </Form.Item>
-        <Form.Item>
           <Button type="primary" className="gx-mb-0" htmlType="submit">
             Ingresar
           </Button>

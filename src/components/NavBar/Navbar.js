@@ -8,8 +8,7 @@ import { useSelector } from "react-redux";
 
 export const Navbar = () => {
   const [visible, setVisible] = useState(false);
-  const { logo } = useSelector(({ auth }) => auth);
-  const [image, setImage] = useState(logo ?? "/assets/images/logo.png");
+  const { dataUser } = useSelector(({ auth }) => auth);
 
   const showDrawer = () => {
     setVisible(true);
@@ -24,7 +23,7 @@ export const Navbar = () => {
       <div className="menuCon">
         <div className="leftMenu">
           <div className="gx-flex-row gx-justify-content-center gx-align-items-center" style={{ height: 67 }}>
-            <LeftMenu mode="horizontal" />
+            <h1 className="gx-mb-0">{`${dataUser.firstName} ${dataUser.lastName}`}</h1>
           </div>
         </div>
         <div className="rightMenu">
@@ -35,7 +34,6 @@ export const Navbar = () => {
         </Button>
         <Drawer placement="right" closable={false} onClose={onClose} visible={visible}>
           <div className="gx-flex-column gx-justify-content-between gx-h-100">
-            <LeftMenu mode="vertical" />
             <RightMenu className="" block={true} />
           </div>
         </Drawer>

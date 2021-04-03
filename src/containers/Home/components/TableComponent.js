@@ -490,14 +490,7 @@ export const TableComponent = ({ openModal }) => {
 
   return (
     <>
-      <Search
-        placeholder="Buscar por Nombre y Apellido ó Número de Reservación"
-        className="gx-mb-3"
-        allowClear
-        onSearch={handleSearch}
-        enterButton="Buscar"
-        size="large"
-      />
+      <Search placeholder="Buscar por Nombre y Apellido ó Número de Reservación" className="gx-mb-3" allowClear onSearch={handleSearch} enterButton="Buscar" />
       <Table size="small" loading={auth.loader || state.loading} className="gx-table-responsive" columns={columns} dataSource={dataSource} />
     </>
   );

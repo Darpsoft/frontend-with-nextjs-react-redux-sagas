@@ -14,11 +14,15 @@ export function* Login({ payload: { password, email } }) {
     const url = `${process.env.NEXT_PUBLIC_URL_API}/rest/user/${email}`;
     const options = putOptionsWithoutToken({}, "PUT", { App: "APP_BCK", Password: password });
     const requestLogin = yield call(request, url, options);
-    const userTypeName = requestLogin.userRole.userRole;
+
+    // Se quito porque no tengo los niveles de usuarios
+    // const userTypeName = requestLogin.userRole.userRole;
+    const userTypeName = "ADMIN";
 
     // En este caso solo se utilizará en token {sessionTokenBck}
     yield all([put(loginSuccess({ tokenUser: requestLogin.sessionTokenBck, dataUser: { ...requestLogin, userTypeName, app: "APP_BCK" } }))]);
     yield call(Router.push, role.getUrl(userTypeName));
+    yield message.success("Login Successful.");
   } catch (err) {
     console.log("🚀 ~ file: auth.js ~ line 21 ~ function*Login ~ err", err);
     message.error("Datos incorrectos");
@@ -32,16 +36,18 @@ export function* Register({ payload: { password, email, ...payload } }) {
   try {
     yield put(showLoader());
 
-    url = `${process.env.NEXT_PUBLIC_URL_API}/rest/user/${email}`;
-    options = postOptionsWithoutToken(payload, "POST", { App: "APP_BCK", Password: password });
+    url = `${process.env.NEXT_PUBLIC_URL_API}/rest/user/${email}?firstname=${payload.firstName}&lastname=${payload.lastName}&phoneNumber=${payload.phoneNumber}`;
+    options = postOptionsWithoutToken({}, "POST", { App: "APP_BCK", Password: password });
     const requestRegister = yield call(request, url, options);
 
-    // filter.where.celphone = parseInt(payload.celphone);
-    // url = `${Config.URL_API}/users?filter=${JSON.stringify(filter)}`;
-    // options = getOptionsWithToken(requestToken.token);
-    // const requestUser = yield call(request, url, options);
+    // Se quito porque no tengo los niveles de usuarios
+    // const userTypeName = requestRegister.userRole.userRole;
+    const userTypeName = "ADMIN";
 
-    // yield all([put(registerSuccess({ tokenUser: requestToken.token, dataUser: requestUser[0] }))]);
+    // En este caso solo se utilizará en token {sessionTokenBck}
+    yield all([put(loginSuccess({ tokenUser: requestRegister.sessionTokenBck, dataUser: { ...requestRegister, userTypeName, app: "APP_BCK" } }))]);
+    yield call(Router.push, role.getUrl(userTypeName));
+    yield message.success("Register Successful.");
   } catch (err) {
     message.error("Al parecer hubo un error");
   } finally {

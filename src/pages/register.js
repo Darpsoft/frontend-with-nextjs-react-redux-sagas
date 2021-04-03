@@ -5,7 +5,7 @@ import Register from "@containers/Register";
 
 const PageLogin = () => {
   return (
-    <Wrapper>
+    <Wrapper isAuth={false}>
       <Register />
     </Wrapper>
   );
