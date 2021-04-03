@@ -1,4 +1,4 @@
-import { REQUEST_HOME_SUCCESS } from "@redux/constants";
+import { REQUEST_HOME_SUCCESS } from "./constants";
 
 const initialState = {
   data: [],

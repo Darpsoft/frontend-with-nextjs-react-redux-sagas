@@ -1,4 +1,4 @@
-import { storage } from "../pages/_app";
+import { getOrCreateStore } from "@utils/with-redux-store";
 import { message } from "antd";
 
 /**
@@ -42,7 +42,7 @@ export default function request(url, options) {
 }
 
 export function postOptionsFormData(body = {}, method = "POST", headers = {}) {
-  const { auth } = storage.getState();
+  const { auth } = getOrCreateStore().getState();
   return {
     method,
     headers: {
@@ -66,7 +66,7 @@ export function postOptionsWithoutToken(body = {}, method = "POST", headers = {}
 }
 
 export function getOptions(method = "GET", headers = {}) {
-  const { auth } = storage.getState();
+  const { auth } = getOrCreateStore().getState();
   return {
     method,
     headers: {
@@ -102,7 +102,7 @@ export function getOptionsWithoutToken(method = "GET", headers = {}) {
 }
 
 export function postOptions(body = {}, method = "POST", headers = {}) {
-  const { auth } = storage.getState();
+  const { auth } = getOrCreateStore().getState();
   return {
     method,
     headers: {
@@ -128,7 +128,7 @@ export function putOptionsWithoutToken(body = {}, method = "PUT", headers = {}) 
 }
 
 export function putOptions(body = {}, method = "PUT", headers = {}) {
-  const { auth } = storage.getState();
+  const { auth } = getOrCreateStore().getState();
   return {
     method,
     headers: {
@@ -142,7 +142,7 @@ export function putOptions(body = {}, method = "PUT", headers = {}) {
 }
 
 export function patchOptions(body = {}, method = "PATCH", headers = {}) {
-  const { auth } = storage.getState();
+  const { auth } = getOrCreateStore().getState();
   return {
     method,
     headers: {
@@ -156,7 +156,7 @@ export function patchOptions(body = {}, method = "PATCH", headers = {}) {
 }
 
 export function deleteOptions(body, method = "DELETE", headers = {}) {
-  const { store } = storage.getState();
+  const { store } = getOrCreateStore().getState();
   return {
     method,
     headers: {

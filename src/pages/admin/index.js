@@ -5,13 +5,13 @@ import Home from "@containers/Home";
 
 import { homeSaga } from "@containers/Home/redux/sagas";
 import { homeReducer } from "@containers/Home/redux/reducers";
-import { requestHomeStart } from "@containers/Home/redux/actions";
 
 import injectSaga from "@utils/inject-saga";
 import injectReducer from "@utils/inject-reducer";
 
 import { compose } from "redux";
 import { useDispatch } from "react-redux";
+import { requestHomeStart } from "@containers/Home/redux/actions";
 
 const PageHome = () => {
   const dispatch = useDispatch();

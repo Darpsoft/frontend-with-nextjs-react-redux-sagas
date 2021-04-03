@@ -1,4 +1,4 @@
-import { REQUEST_HOME_START, REQUEST_HOME_SUCCESS } from "@redux/constants";
+import { REQUEST_HOME_START, REQUEST_HOME_SUCCESS } from "./constants";
 
 export const requestHomeStart = (payload) => ({
   type: REQUEST_HOME_START,

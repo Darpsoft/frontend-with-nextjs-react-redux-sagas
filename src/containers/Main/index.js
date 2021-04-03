@@ -5,9 +5,9 @@ import { useDispatch } from "react-redux";
 import { compose } from "redux";
 
 import injectSaga from "@utils/inject-saga";
-import authSaga from "@redux/sagas/auth";
+import { authSaga } from "@redux/sagas/auth";
 
-export const Main = ({ component: Component, pageProps }) => {
+const Main = ({ component: Component, pageProps }) => {
   const dispatch = useDispatch();
   const router = useRouter();
 

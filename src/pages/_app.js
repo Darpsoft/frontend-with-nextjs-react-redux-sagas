@@ -13,7 +13,7 @@ import Router from "next/router";
 
 import withReduxStore from "@utils/with-redux-store";
 import { Provider } from "react-redux";
-import { Main } from "@containers/Main";
+import Main from "@containers/Main";
 
 NProgress.configure({ showSpinner: false });
 

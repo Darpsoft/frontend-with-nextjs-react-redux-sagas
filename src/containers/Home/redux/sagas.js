@@ -1,8 +1,8 @@
 import { put, takeLatest, select, all, call } from "redux-saga/effects";
 import request, { showMessageError } from "@utils/request";
 import { showLoader, hideLoader } from "@redux/actions";
-import { REQUEST_HOME_START } from "@redux/constants";
 import { UserServices } from "@services/User";
+import { REQUEST_HOME_START } from "./constants";
 
 export function* requestHome({ payload }) {
   console.log("🚀 ~ file: home.js ~ line 7 ~ function*requestHome ~ payload", payload);
